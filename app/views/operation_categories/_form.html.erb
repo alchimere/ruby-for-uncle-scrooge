@@ -1,0 +1,28 @@
+<%= form_with(model: operation_category, local: true) do |form| %>
+  <% if operation_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(operation_category.errors.count, "error") %> prohibited this operation_category from being saved:</h2>
+
+      <ul>
+      <% operation_category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :operation_category_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :operation_category_id %>
+    <%= form.select :operation_category_id,
+        OperationCategory.all.map { |_m| [_m.name, _m.id] }, id: :operation_category_operation_category_id, include_blank: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

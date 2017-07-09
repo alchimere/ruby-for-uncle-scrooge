@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @operation_category.name %>
+</p>
+
+<p>
+  <strong>Operation category:</strong>
+  <%= @operation_category.operation_category_id %>
+</p>
+
+<%= link_to 'Edit', edit_operation_category_path(@operation_category) %> |
+<%= link_to 'Back', operation_categories_path %>
