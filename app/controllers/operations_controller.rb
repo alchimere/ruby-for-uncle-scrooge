@@ -1,10 +1,11 @@
 class OperationsController < ApplicationController
+  layout 'app'
   before_action :set_operation, only: [:show, :edit, :update, :destroy]
 
   # GET /operations
   # GET /operations.json
   def index
-    @operations = Operation.all
+    @operations = Operation.order(operation_date: :desc).all
   end
 
   # GET /operations/1

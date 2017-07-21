@@ -1,41 +1,52 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <p id="notice"><%= notice %></p>
 
-<h1>Operations</h1>
+      <div class="card">
+        <div class="header">
+          <h4 class="title">Operations</h4>
+          <p class="category">Here is a subtitle for this table</p>
+        </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Account</th>
-      <th>Operation category</th>
-      <th>Name</th>
-      <th>Original name</th>
-      <th>Amount</th>
-      <th>Operation date</th>
-      <th>Value date</th>
-      <th>Comment</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <div class="content table-responsive table-full-width">
+          <table class="table table-hover table-striped table-condensed">
+            <thead>
+              <tr>
+                <th>Account</th>
+                <th>Category</th>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th colspan="2"></th>
+              </tr>
+            </thead>
 
-  <tbody>
-    <% @operations.each do |operation| %>
-      <tr>
-        <td><%= operation.account_id %></td>
-        <td><%= operation.operation_category_id %></td>
-        <td><%= operation.name %></td>
-        <td><%= operation.original_name %></td>
-        <td><%= operation.amount %></td>
-        <td><%= operation.operation_date %></td>
-        <td><%= operation.value_date %></td>
-        <td><%= operation.comment %></td>
-        <td><%= link_to 'Show', operation %></td>
-        <td><%= link_to 'Edit', edit_operation_path(operation) %></td>
-        <td><%= link_to 'Destroy', operation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            <tbody>
+              <% @operations.each do |operation| %>
+              <tr>
+                <td><%= operation.account.name %></td>
+                <td><%= operation.operation_category.name %></td>
+                <td class="<%= operation.amount > 0 ? 'success' : 'danger' %>">
+                  <%= operation.name %>
+                  <% if operation.comment.present? %>
+                    <br/><small class="text-muted"><%= operation.comment %></small>
+                  <% end %>
+                </td>
+                <td class="<%= operation.amount > 0 ? 'success' : 'danger' %> text-nowrap"><%= operation.amount.round(2) %> €</td>
+                <td class="text-nowrap"><%= operation.operation_date %></td>
+                <td><%= link_to 'Show', operation %></td>
+                <td><%= link_to 'Edit', edit_operation_path(operation) %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
 
-<br>
+          <br/>
 
-<%= link_to 'New Operation', new_operation_path %>
+          <%= link_to 'New Operation', new_operation_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

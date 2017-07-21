@@ -1,6 +1,21 @@
-<h1>Editing Operation</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <p id="notice"><%= notice %></p>
 
-<%= render 'form', operation: @operation %>
+      <div class="card">
+        <div class="header">
+          <h4 class="title">Editing Operation</h4>
+          <p class="category">Here is a subtitle for this table</p>
+        </div>
 
-<%= link_to 'Show', @operation %> |
-<%= link_to 'Back', operations_path %>
+        <div class="content table-responsive table-full-width">
+          <%= render 'form', operation: @operation %>
+
+          <%= link_to 'Show', @operation %> |
+          <%= link_to 'Back', operations_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
